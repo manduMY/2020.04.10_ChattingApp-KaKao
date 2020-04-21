@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mGoogleSignInClient.signOut();
-                Toast.makeText(MainActivity.this, "Your Logged Out", Toast.LENGTH_SHORT).show();
+                mAuth.signOut();
+                Toast.makeText(MainActivity.this, "Signed Out !!", Toast.LENGTH_SHORT).show();
                 btnSignOut.setVisibility(View.INVISIBLE);
             }
         });
@@ -99,21 +99,22 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
-                // ...
-            }
+            handleSignInResult(task);
         }
     }
 
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try{
+            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
+            Toast.makeText(MainActivity.this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
+            firebaseAuthWithGoogle(acc);
+        }catch(ApiException e) {
+            Toast.makeText(MainActivity.this, "Signed In Failed", Toast.LENGTH_SHORT).show();
+            firebaseAuthWithGoogle(null);
+        }
+    }
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
@@ -138,13 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
+
     private void updateUI(FirebaseUser fUser) {
         btnSignOut.setVisibility(View.VISIBLE);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());

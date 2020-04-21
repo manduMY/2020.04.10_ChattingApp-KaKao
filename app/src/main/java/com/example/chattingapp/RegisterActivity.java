@@ -25,10 +25,22 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editTextName;
     private Button btnSubmit;
 
+    private FirebaseAuth mAuth;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        updateUI(currentUser);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        mAuth = FirebaseAuth.getInstance();
 
         // Initialize Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -56,26 +68,32 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Name을 입력해 주십시오.",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                createUser(strEmail, strPassword, strName);
+                mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
+                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d(TAG, "createUserWithEmail:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+//                                    updateUI(user);
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                    Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+//                                    updateUI(null);
+                                }
+
+                                // ...
+                            }
+                        });
+
 
             }
         });
     }
-    private void createUser(String email, String password, String name) {
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // 회원가입 성공시
-                            Toast.makeText(RegisterActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            // 계정이 중복된 경우
-                            Toast.makeText(RegisterActivity.this, "이미 존재하는 계정입니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+
+
 
 }
