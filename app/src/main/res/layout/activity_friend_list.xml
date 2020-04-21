@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FriendListActivity">
+    tools:context=".FriendListActivity"
+    >
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#E3DDDD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_navigation_main"
+        app:itemIconTint="@color/bottom_section_color"
+        app:itemTextColor="@color/bottom_section_color"
+        app:labelVisibilityMode="unlabeled"
+        />
 
     <TextView
         android:id="@+id/FriendListTitle"
@@ -30,18 +45,9 @@
         android:adjustViewBounds="true"
         android:maxWidth="50dp"
         android:maxHeight="50dp"/>
-    <ImageButton
-        android:id="@+id/MyBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/my"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:maxWidth="50dp"
-        android:maxHeight="50dp"/>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
