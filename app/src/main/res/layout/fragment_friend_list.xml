@@ -3,56 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FriendListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/FriendList_TopMenuBar"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_margin="20dp">
         <TextView
             android:id="@+id/FriendListTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="친구"
             android:textSize="20dp"/>
     <ImageButton
         android:id="@+id/SearchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/FriendPlusBtn"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="20dp"
         android:src="@drawable/ic_search"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:maxWidth="20dp"
         android:maxHeight="20dp"
-        android:background="@android:color/transparent"
-        android:layout_toLeftOf="@id/FriendPlusBtn"
-        android:layout_marginTop="3dp"
-        android:layout_marginRight="20dp"/>
+        android:background="@android:color/transparent" />
     <ImageButton
         android:id="@+id/FriendPlusBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/SettingBtn"
+        android:layout_marginRight="20dp"
         android:src="@drawable/ic_friends_plus"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:maxWidth="50dp"
         android:maxHeight="50dp"
         android:background="@android:color/transparent"
-        android:layout_toLeftOf="@id/SettingBtn"
-        android:layout_marginRight="20dp"/>
+        />
     <ImageButton
         android:id="@+id/SettingBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="2dp"
         android:src="@drawable/ic_settings"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="2dp"
         android:maxWidth="20dp"
         android:maxHeight="20dp"
         android:background="@android:color/transparent"/>
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
