@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".SignUpActivity">
 
     <TextView
-        android:id="@+id/RegisterTitle"
+        android:id="@+id/SignUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원가입"
@@ -17,44 +17,45 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="100dp"/>
     <EditText
-        android:id="@+id/editText_email"
+        android:id="@+id/SignUp_editText_email"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/RegisterTitle"
+        app:layout_constraintTop_toBottomOf="@id/SignUpTitle"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Email"
         android:inputType="textEmailAddress"/>
     <EditText
-        android:id="@+id/editText_password"
+        android:id="@+id/SignUp_editText_password"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editText_email"
+        app:layout_constraintTop_toBottomOf="@id/SignUp_editText_email"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Password"
         android:inputType="textPassword"/>
     <EditText
-        android:id="@+id/editText_name"
+        android:id="@+id/SignUp_editText_name"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editText_password"
+        app:layout_constraintTop_toBottomOf="@id/SignUp_editText_password"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Name"
         android:inputType="text"/>
     <Button
-        android:id="@+id/BtnSubmit"
-        android:text="Submit"
+        android:id="@+id/SignUp_BtnSignUp"
+        android:text="Sign Up!"
         android:textSize="20dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editText_name"
+        app:layout_constraintTop_toBottomOf="@id/SignUp_editText_name"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
