@@ -77,18 +77,18 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strEmail = editTextEmail.getText().toString();
-                final String strPassword = editTextPassword.getText().toString();
-                if(strEmail.isEmpty()) {
-                    Toast.makeText(SignInActivity.this,"Sign In: Email을 입력해 주십시오.",Toast.LENGTH_SHORT).show();
+                final String email = editTextEmail.getText().toString();
+                final String password = editTextPassword.getText().toString();
+                if(email.isEmpty()) {
+                    Toast.makeText(SignInActivity.this,"Email을 입력해 주십시오.",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(strPassword.isEmpty()) {
-                    Toast.makeText(SignInActivity.this,"Sign In: Password를 입력해 주십시오." + strPassword,Toast.LENGTH_SHORT).show();
+                if(password.isEmpty()) {
+                    Toast.makeText(SignInActivity.this,"Password를 입력해 주십시오." + password,Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(strEmail, strPassword)
+                mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -97,14 +97,17 @@ public class SignInActivity extends AppCompatActivity {
                                     Log.d(TAG, "signInWithEmail:success");
                                     Toast.makeText(SignInActivity.this, "환영합니다", Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    Intent in = new Intent(SignInActivity.this, UserProfileActivity.class);
+                                    startActivity(in);
                                     updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    if (strPassword.length() < 8) {
-                                        Toast.makeText(SignInActivity.this, "Sign In: 비밀번호를 8자 이상 입력 해주십시오.", Toast.LENGTH_SHORT).show();
+                                    if (password.length() < 8)
+                                    {
+                                        Toast.makeText(SignInActivity.this, "비밀번호를 8자 이상 입력 해주십시오.", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(SignInActivity.this, "Sign In: 인증 실패", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SignInActivity.this, "인증 실패", Toast.LENGTH_SHORT).show();
                                     }
                                     updateUI(null);
                                 }
@@ -193,10 +196,6 @@ public class SignInActivity extends AppCompatActivity {
             Log.d(TAG, "Debug personId: " + personId);
             Log.d(TAG, "Debug personPhoto: " + personPhoto);
             Toast.makeText(SignInActivity.this, personName + personEmail, Toast.LENGTH_SHORT).show();
-        } else if(account == null) {
-            Intent intent = new Intent(SignInActivity.this, UserProfileActivity.class);
-            startActivity(intent);
-            finish();
         }
     }
 }

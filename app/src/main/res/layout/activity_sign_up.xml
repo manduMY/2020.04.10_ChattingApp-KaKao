@@ -25,7 +25,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Email"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        />
     <EditText
         android:id="@+id/SignUp_editText_password"
         android:layout_width="200dp"
@@ -35,7 +36,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        />
     <EditText
         android:id="@+id/SignUp_editText_name"
         android:layout_width="200dp"
@@ -45,7 +47,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Name"
-        android:inputType="text"/>
+        android:inputType="text"
+        />
     <Button
         android:id="@+id/SignUp_BtnSignUp"
         android:text="Sign Up!"
@@ -56,6 +59,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/radius_button_background"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

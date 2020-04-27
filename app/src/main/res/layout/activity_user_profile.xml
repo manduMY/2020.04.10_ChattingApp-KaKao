@@ -6,10 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileActivity">
 
-    <TextView
-        android:layout_height="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/User_Profile_Layout"
         android:layout_width="match_parent"
-        android:text="hello world"
+        android:layout_height="190dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        >
+
+        <ImageButton
+            android:id="@+id/update_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:gravity="center_vertical"
+            android:src="@drawable/user_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:foreground="@drawable/user_profile_radius"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/User_Profile_Layout"
+        >
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/TextView_NickName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="닉네임"
+                android:textColor="@color/colorPrimaryDark"/>
+            <EditText
+                android:id="@+id/EditText_NickName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName|textCapSentences"
+                android:hint="Enter Your NickName"/>
+            <TextView
+                android:id="@+id/TextView_PhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="휴대폰 번호"
+                android:textColor="@color/colorPrimaryDark"/>
+            <EditText
+                android:id="@+id/EditText_PhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="11"
+                android:inputType="textPersonName|textCapSentences"
+                android:hint="Enter Your Phone Number"/>
+            <TextView
+                android:id="@+id/TextView_YourEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E-Mail"
+                android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:id="@+id/YourEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text=""
+                android:textColor="@color/colorPrimaryDark"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:id="@+id/btnSaveButton"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/radius_button_background"
+                android:textColor="@color/colorPrimaryDark"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
