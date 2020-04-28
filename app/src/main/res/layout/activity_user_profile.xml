@@ -15,7 +15,7 @@
         >
 
         <ImageButton
-            android:id="@+id/update_imageView"
+            android:id="@+id/updateImage"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:gravity="center_vertical"
