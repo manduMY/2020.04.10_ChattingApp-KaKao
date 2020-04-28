@@ -97,7 +97,7 @@ public class SignInActivity extends AppCompatActivity {
                                     Log.d(TAG, "signInWithEmail:success");
                                     Toast.makeText(SignInActivity.this, "환영합니다", Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent in = new Intent(SignInActivity.this, UserProfileActivity.class);
+                                    Intent in = new Intent(SignInActivity.this, EditUserProfileActivity.class);
                                     startActivity(in);
                                     updateUI(user);
                                 } else {
