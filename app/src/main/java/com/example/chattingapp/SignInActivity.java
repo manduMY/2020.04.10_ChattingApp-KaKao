@@ -32,8 +32,8 @@ public class SignInActivity extends AppCompatActivity {
     private SignInButton googleSignIn;
     private GoogleSignInClient mGoogleSignInClient;
     private static final String TAG = "SignInActivity";
-    private FirebaseAuth mAuth;
-    private Button btnSignOut, btnSignIn, btnSignUp;
+    private FirebaseAuth firebaseAuth;
+    private Button btnSignIn, btnSignUp;
     private int RC_SIGN_IN = 1;
 
     @Override
@@ -45,8 +45,7 @@ public class SignInActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.SignIn_EditPassword);
 
         googleSignIn = (SignInButton) findViewById(R.id.Btn_Google_SignIn);
-        mAuth = FirebaseAuth.getInstance();
-        btnSignOut = (Button) findViewById(R.id.SignIn_btnSignOut);
+        firebaseAuth = FirebaseAuth.getInstance();
         btnSignIn = (Button)findViewById(R.id.SignIn_BtnSignIn);
 
 
@@ -65,15 +64,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        btnSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                Toast.makeText(SignInActivity.this, "Signed Out !!", Toast.LENGTH_SHORT).show();
-                btnSignOut.setVisibility(View.INVISIBLE);
-            }
-        });
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +78,7 @@ public class SignInActivity extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
+                firebaseAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -96,7 +86,7 @@ public class SignInActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "signInWithEmail:success");
                                     Toast.makeText(SignInActivity.this, "환영합니다", Toast.LENGTH_SHORT).show();
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
                                     Intent in = new Intent(SignInActivity.this, EditUserProfileActivity.class);
                                     startActivity(in);
                                     updateUI(user);
@@ -155,14 +145,14 @@ public class SignInActivity extends AppCompatActivity {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
+        firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -177,7 +167,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser fUser) {
-        btnSignOut.setVisibility(View.VISIBLE);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account != null) {
             String personName = account.getDisplayName();

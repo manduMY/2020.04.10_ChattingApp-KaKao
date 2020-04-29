@@ -24,7 +24,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:foreground="@drawable/user_profile_radius"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_height="wrap_content"
