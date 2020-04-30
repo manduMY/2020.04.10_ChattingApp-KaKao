@@ -39,6 +39,5 @@ public class SettingActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        overridePendingTransition(R.anim.stay, R.anim.sliding_down);
     }
 }

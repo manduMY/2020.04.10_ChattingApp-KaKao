@@ -32,7 +32,7 @@ import java.io.IOException;
 
 public class EditUserProfileActivity extends AppCompatActivity implements View.OnClickListener{
     private static int PICK_IMAGE = 123;
-    private ImageButton profileImageView;
+    private ImageButton profileImageButton;
     Uri imagePath;
     private FirebaseAuth firebaseAuth;
     private TextView textViewemailname;
@@ -60,12 +60,12 @@ public class EditUserProfileActivity extends AppCompatActivity implements View.O
         profileSaveButton.setOnClickListener(this);
         textViewemailname=(TextView)findViewById(R.id.YourEmail);
         textViewemailname.setText(user.getEmail());
-        profileImageView = findViewById(R.id.updateImage);
+        profileImageButton = findViewById(R.id.profile_picture_imageBtn);
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
 
-        profileImageView.setOnClickListener(new Button.OnClickListener(){
+        profileImageButton.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent profileIntent = new Intent();
@@ -84,12 +84,11 @@ public class EditUserProfileActivity extends AppCompatActivity implements View.O
             imagePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imagePath);
-                profileImageView.setImageBitmap(bitmap);
+                profileImageButton.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
     }
     private void userInformation(){
         String nickname = editTextNickName.getText().toString().trim();

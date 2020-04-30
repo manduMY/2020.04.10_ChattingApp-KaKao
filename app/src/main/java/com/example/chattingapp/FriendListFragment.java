@@ -35,7 +35,6 @@ public class FriendListFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.sliding_up, R.anim.stay);
         }
         });
 
