@@ -37,6 +37,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.io.IOException;
 
 public class UserProfileActivity extends AppCompatActivity {
@@ -51,12 +52,13 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView textViewemailname;
     private EditText editTextName;
     private StorageReference storageReference;
+    private final CharSequence[] strSelectDialogImg = {"기본 이미지 선택", "다른 이미지 선택"};
     private static final String TAG = "UserProfileActivity";
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference = firebaseStorage.getReference();
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null) {
             imagePath = data.getData();
             Log.d(TAG, storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Pic").getDownloadUrl().toString());
@@ -97,10 +99,7 @@ public class UserProfileActivity extends AppCompatActivity {
         profileImageButton.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent profileIntent = new Intent();
-                profileIntent.setType("image/*");
-                profileIntent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(profileIntent, "Select Image."), PICK_IMAGE);
+                showSelectImgDialog();
             }
         });
 
@@ -124,6 +123,25 @@ public class UserProfileActivity extends AppCompatActivity {
                 Toast.makeText(UserProfileActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void showSelectImgDialog() {
+        AlertDialog.Builder selectImgDialog = new AlertDialog.Builder(this);
+        selectImgDialog.setTitle("이미지 수정").setItems(strSelectDialogImg, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                switch (which) {
+                    case 0:
+                        navigateSelectImg(which);
+                        break;
+                    case 1:
+                        navigateSelectImg(which);
+                        break;
+                    default:
+                }
+            }
+        }).show();
+
     }
     public void buttonClickedEditName(View view) {
         LayoutInflater inflater = getLayoutInflater();
@@ -204,6 +222,34 @@ public class UserProfileActivity extends AppCompatActivity {
                 Toast.makeText(UserProfileActivity.this, "Profile picture uploaded", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void navigateSelectImg(int dialogNum){
+        if(dialogNum == 0) {
+            profileImageButton.setImageResource(R.drawable.user_profile);
+            imagePath = null;
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            // Get "User UID" from Firebase > Authentification > Users.
+            databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
+            StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Pic"); //User id/Images/Profile Pic.jpg
+            imageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    // File deleted successfully
+                    Toast.makeText(UserProfileActivity.this, "profile picture standard image", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Uh-oh, an error occurred!
+                    Toast.makeText(UserProfileActivity.this, "Error: Changing profile picture standard image", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else if(dialogNum == 1) {
+            Intent profileIntent = new Intent();
+            profileIntent.setType("image/*");
+            profileIntent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(profileIntent, "Select Image."), PICK_IMAGE);
+        }
     }
     public void navigateSave(View v){
         if (imagePath == null) {
