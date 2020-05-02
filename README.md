@@ -7,4 +7,6 @@ ChattingApp
 
 안드로이드 채팅 어플
 
+-RxJava와 MVVM 패턴을 적용 시키는중입니다
+
 > Readme 작성중...
