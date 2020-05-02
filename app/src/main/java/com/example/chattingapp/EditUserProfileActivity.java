@@ -128,13 +128,13 @@ public class EditUserProfileActivity extends AppCompatActivity implements View.O
                 userInformation();
                 // sendUserData();
                 finish();
-                startActivity(new Intent(EditUserProfileActivity.this, HomeActivity.class));
+//                startActivity(new Intent(EditUserProfileActivity.this, HomeActivity.class));
             }
             else {
                 userInformation();
                 sendUserData();
-                finish();
-                startActivity(new Intent(EditUserProfileActivity.this, HomeActivity.class));
+//                finish();
+//                startActivity(new Intent(EditUserProfileActivity.this, HomeActivity.class));
             }
         }
     }
