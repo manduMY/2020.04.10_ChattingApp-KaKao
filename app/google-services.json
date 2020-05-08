@@ -42,6 +42,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275443482946:android:0387e836ddf6ba53df88db",
+        "android_client_info": {
+          "package_name": "com.example.withtalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275443482946-v8025v66mtigpb89d8vr8b7gsuf86sbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.withtalk",
+            "certificate_hash": "af2ddfa637b104c7bf27e25806c1cf843447473f"
+          }
+        },
+        {
+          "client_id": "275443482946-ab51ne0g9ib4ddug5r52frfiffdse48e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAisL8kVBTejI-C7TzaM_UM9MtSmd9KcV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275443482946-ab51ne0g9ib4ddug5r52frfiffdse48e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
