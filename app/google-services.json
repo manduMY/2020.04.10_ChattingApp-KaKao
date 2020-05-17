@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:275443482946:android:5a9cac07a2aca696df88db",
+        "mobilesdk_app_id": "1:275443482946:android:3aaede782274395fdf88db",
         "android_client_info": {
-          "package_name": "com.example.chattingapp"
+          "package_name": "com.example.chocotalk"
         }
       },
       "oauth_client": [
         {
-          "client_id": "275443482946-052rmodbaj3082otqvaah6q4js8b90ds.apps.googleusercontent.com",
+          "client_id": "275443482946-nk5n6amj0a9tdmhclefn6197sv9qk1ik.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.chattingapp",
-            "certificate_hash": "af2ddfa637b104c7bf27e25806c1cf843447473f"
+            "package_name": "com.example.chocotalk",
+            "certificate_hash": "671319c42ec4eaaf4cc2bfc592e24c0106ccba3b"
           }
         },
         {
