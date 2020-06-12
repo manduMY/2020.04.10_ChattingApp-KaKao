@@ -4,83 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Auth.AuthActivity">
+    tools:context=".Login.SiginInActivity">
 
     <TextView
-        android:id="@+id/text_view_title"
+        android:id="@+id/SignInTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choco Talk"
-        android:textSize="30dp"
+        android:text="@string/chatting"
+        android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        />
     <EditText
-        android:id="@+id/edit_text_email"
+        android:id="@+id/SignIn_EditEmail"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_view_title"
+        app:layout_constraintTop_toBottomOf="@id/SignInTitle"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:autofillHints=""
+        />
     <EditText
-        android:id="@+id/edit_text_password"
+        android:id="@+id/SignIn_EditPassword"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_email"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/SignIn_EditEmail"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        />
+        android:autofillHints="" />
     <Button
-        android:id="@+id/button_sign_in"
-        android:text="LOG IN"
-        android:textSize="20dp"
+        android:id="@+id/SignIn_BtnSignIn"
+        android:text="@string/login"
+        android:textSize="20sp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_password"
+        app:layout_constraintTop_toBottomOf="@id/SignIn_EditPassword"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/radius_button_style"
         />
     <Button
-        android:id="@+id/button_sign_up"
-        android:text="User Sign Up"
-        android:textSize="20dp"
+        android:id="@+id/SignIn_BtnSignUp"
+        android:text="@string/sign_up"
+        android:textSize="20sp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/button_sign_in"
+        app:layout_constraintTop_toBottomOf="@id/SignIn_BtnSignIn"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/radius_button_style"
         />
     <com.google.android.gms.common.SignInButton
-        android:id="@+id/button_google_sign_in"
+        android:id="@+id/Btn_Google_SignIn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/button_sign_up"
+        app:layout_constraintTop_toBottomOf="@id/SignIn_BtnSignUp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!--    <Button-->
-    <!--        android:id="@+id/button_sign_up"-->
-    <!--        android:text="LogOut"-->
-    <!--        android:textSize="20dp"-->
-    <!--        android:layout_width="200dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/button_google_sign_in"-->
-
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        android:visibility="invisible"-->
-    <!--        />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.chocotalk;
+package com.example.chatproject;
 
 import org.junit.Test;
 

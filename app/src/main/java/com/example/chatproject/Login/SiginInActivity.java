@@ -1,16 +1,16 @@
-package com.example.chocotalk.Auth;
+package com.example.chatproject.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.chocotalk.R;
+import com.example.chatproject.R;
 
-public class AuthActivity extends AppCompatActivity {
+public class SiginInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auth);
+        setContentView(R.layout.activity_sigin_in);
     }
 }
