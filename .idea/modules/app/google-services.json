@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "275443482946",
+    "firebase_url": "https://kakaochat-a5c25.firebaseio.com",
+    "project_id": "kakaochat-a5c25",
+    "storage_bucket": "kakaochat-a5c25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275443482946:android:3643532ce4e2f2a4df88db",
+        "android_client_info": {
+          "package_name": "com.example.chatproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275443482946-cbmatdq40mm5njfvk562gor2h9uu79t5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatproject",
+            "certificate_hash": "af2ddfa637b104c7bf27e25806c1cf843447473f"
+          }
+        },
+        {
+          "client_id": "275443482946-ab51ne0g9ib4ddug5r52frfiffdse48e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAisL8kVBTejI-C7TzaM_UM9MtSmd9KcV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275443482946-ab51ne0g9ib4ddug5r52frfiffdse48e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

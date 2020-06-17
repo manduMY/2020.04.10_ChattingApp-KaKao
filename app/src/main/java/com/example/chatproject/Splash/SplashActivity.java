@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.chatproject.Login.SiginInActivity;
+import com.example.chatproject.Sign.SignInActivity;
 import com.example.chatproject.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     private class splashHandler implements Runnable{
         @Override
         public void run() {
-            startActivity(new Intent(getApplication(), SiginInActivity.class));
+            startActivity(new Intent(getApplication(), SignInActivity.class));
             SplashActivity.this.finish(); // 로딩 페이지 Activity Stack에서 제거
         }
     }
