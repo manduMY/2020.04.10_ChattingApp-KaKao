@@ -8,6 +8,8 @@ import android.os.Handler;
 
 import com.example.chatproject.Sign.SignInActivity;
 import com.example.chatproject.R;
+import com.example.chatproject.component.LoginActivity;
+import com.example.chatproject.viewmodelimpl.screen.LoginScreenViewModelImpl;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
     private class splashHandler implements Runnable{
         @Override
         public void run() {
-            startActivity(new Intent(getApplication(), SignInActivity.class));
+            startActivity(new Intent(getApplication(), LoginActivity.class));
             SplashActivity.this.finish(); // 로딩 페이지 Activity Stack에서 제거
         }
     }
